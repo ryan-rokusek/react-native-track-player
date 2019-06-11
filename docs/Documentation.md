@@ -386,6 +386,7 @@ Fired when the user presses the jump forward button. Only fired if the `CAPABILI
 #### `remote-jump-backward`
 Fired when the user presses the jump backward button. Only fired if the `CAPABILITY_JUMP_BACKWARD` is allowed.
 
+
 | Param    | Type     | Description   |
 | -------- | -------- | ------------- |
 | interval | `number` | The number of seconds to jump backward. It's usually the `jumpInterval` set in the options. |
@@ -398,11 +399,23 @@ Fired when the device needs the player to pause or lower the volume for a short 
 - When the event is triggered with `paused` set to true, you should pause the playback. It will also be set to true in both cases described above.
 - When the event is triggered and none of them are set to true, you should resume the track and set the volume back to its original value.
 
+**android**
 | Param     | Type      | Description                                  |
 | --------- | --------- | -------------------------------------------- |
 | paused    | `boolean` | Whether the player should pause the playback |
 | permanent | `boolean` | Whether the player should stop the playback  |
 | ducking   | `boolean` | Whether the player should lower their volume |
+
+**ios**
+
+Fired when you’re watching a movie in the Videos app or you receive a phone call or FaceTime request.
+
+| Param Value    | Type     | Description                                     |
+| -------------- | -------- | ----------------------------------------------- |
+| began          | `string` | Interruption began, take appropriate actions    |
+| ended          | `string` | Interruption ended, take appropriate actions    |
+| shouldResume   | `string` | Interruption Ended - playback should resume     |
+| notResume      | `string` | Interruption Ended - playback should NOT resume |
 
 ### Player
 #### `playback-state`
